@@ -1,0 +1,72 @@
+[
+  {
+    "title": "Blinding Lights",
+    "text": "The Weeknd",
+    "rating": 4.8,
+    "image": "https://i.ytimg.com/vi/4NRXx6U8ABQ/hqdefault.jpg",
+    "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+  },
+  {
+    "title": "Levitating",
+    "text": "Dua Lipa ft. DaBaby",
+    "rating": 4.7,
+    "image": "https://i.ytimg.com/vi/TUVcZfQe-Kw/hqdefault.jpg",
+    "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
+  },
+  {
+    "title": "Stay",
+    "text": "The Kid LAROI, Justin Bieber",
+    "rating": 4.6,
+    "image": "https://i.ytimg.com/vi/kTJczUoc26U/hqdefault.jpg",
+    "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"
+  },
+  {
+    "title": "Peaches",
+    "text": "Justin Bieber ft. Daniel Caesar",
+    "rating": 4.5,
+    "image": "https://i.ytimg.com/vi/tQ0yjYUFKAE/hqdefault.jpg",
+    "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3"
+  },
+  {
+    "title": "Good 4 U",
+    "text": "Olivia Rodrigo",
+    "rating": 4.4,
+    "image": "https://i.ytimg.com/vi/gNi_6U5Pm_o/hqdefault.jpg",
+    "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3"
+  },
+  {
+    "title": "Montero (Call Me By Your Name)",
+    "text": "Lil Nas X",
+    "rating": 4.6,
+    "image": "https://i.ytimg.com/vi/6swmTBVI83k/hqdefault.jpg",
+    "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3"
+  },
+  {
+    "title": "Watermelon Sugar",
+    "text": "Harry Styles",
+    "rating": 4.7,
+    "image": "https://i.ytimg.com/vi/E07s5ZYygMg/hqdefault.jpg",
+    "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3"
+  },
+  {
+    "title": "Bad Habits",
+    "text": "Ed Sheeran",
+    "rating": 4.5,
+    "image": "https://i.ytimg.com/vi/orJSJGHjBLI/hqdefault.jpg",
+    "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3"
+  },
+  {
+    "title": "Industry Baby",
+    "text": "Lil Nas X, Jack Harlow",
+    "rating": 4.6,
+    "image": "https://i.ytimg.com/vi/UTHLKHL_whs/hqdefault.jpg",
+    "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3"
+  },
+  {
+    "title": "Butter",
+    "text": "BTS",
+    "rating": 4.9,
+    "image": "https://i.ytimg.com/vi/WMweEpGlu_U/hqdefault.jpg",
+    "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3"
+  }
+]

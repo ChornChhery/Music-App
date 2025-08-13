@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'app_colors.dart' as AppColors;
 import 'package:flutter/material.dart';
+import 'dart:convert';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
@@ -10,6 +11,25 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
+  List popularSongs;
+
+  ReadData() async{
+    await DefaultAssetBundle.of(context).loadString("json/popularSongs.json").then((s) {
+      setState(() {
+        popularSongs = json.decode(s);
+      });
+    });
+  }
+
+  @override 
+  void initState() {
+    super.initState();
+    ReadData();
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -61,7 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       height: 180,
                       child: PageView.builder(
                           controller: PageController(viewportFraction: 0.8),
-                          itemCount: 5,
+                          itemCount: popularSongs==null?0:popularSongs.length,
                           itemBuilder: (_, i){
                         return Container(
                           height: 180,
@@ -70,7 +90,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(15),
                             image: DecorationImage(
-                              image: NetworkImage("https://i.ytimg.com/vi/0BdlKkvjEgA/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCFyfS5NqZv3VoJoW2htUI3GoLS8Q"),
+                              image: NetworkImage(popularSongs[i]["image"]),
                               fit: BoxFit.fill,
                             )
                           ),
