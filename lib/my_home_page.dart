@@ -112,14 +112,15 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                   return [
                     SliverAppBar(
                       pinned: true,
+                      backgroundColor: AppColors.sliverBackground,
                       bottom: PreferredSize(
                         preferredSize: Size.fromHeight(50),
                         child: Container(
-                          margin: const EdgeInsets.all(0),
+                          margin: const EdgeInsets.only(bottom: 20, left: 10),
                           child: TabBar(
                             indicatorPadding: const EdgeInsets.all(0),
                             indicatorSize: TabBarIndicatorSize.label,
-                            labelPadding: const EdgeInsets.all(0),
+                            labelPadding: const EdgeInsets.only(right: 10),
                             controller: _tabController,
                             isScrollable: true,
                             indicator: BoxDecoration(
@@ -140,8 +141,11 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                                   "New", style: TextStyle(color: Colors.white),
 
                                 ),
+                                alignment: Alignment.center,
+
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
+                                  color: AppColors.menu1Color,
                                   boxShadow: [
                                     BoxShadow(
                                       color: Colors.grey.withOpacity(0.3),
@@ -150,7 +154,48 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                                     )
                                   ]
                                 ),
-                              )
+                              ),
+                                                            Container(
+                                width: 120,
+                                height: 50,
+                                child: Text(
+                                  "New", style: TextStyle(color: Colors.white),
+
+                                ),
+                                alignment: Alignment.center,
+
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: AppColors.menu2Color,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.grey.withOpacity(0.3),
+                                      blurRadius: 7,
+                                      offset: Offset(0, 0)
+                                    )
+                                  ]
+                                ),
+                              ),
+                              Container(
+                                width: 120,
+                                height: 50,
+                                child: Text(
+                                  "New", style: TextStyle(color: Colors.white),
+
+                                ),
+                                alignment: Alignment.center,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: AppColors.menu3Color,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.grey.withOpacity(0.3),
+                                      blurRadius: 7,
+                                      offset: Offset(0, 0)
+                                    )
+                                  ]
+                                ),
+                              ),
                             ],
                           ),
                         ),
@@ -158,6 +203,37 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                     )
                   ];
                 },
+                body: TabBarView(
+                  children: [
+                    Material(
+                      child: ListTile(
+                        leading: CircleAvatar(
+                          backgroundColor: Colors.grey,
+                        ),
+                        title: Text("Content")
+                      ),
+                      
+                    ),
+                    Material(
+                      child: ListTile(
+                        leading: CircleAvatar(
+                          backgroundColor: Colors.grey,
+                        ),
+                        title: Text("Content")
+                      ),
+                      
+                    ),
+                    Material(
+                      child: ListTile(
+                        leading: CircleAvatar(
+                          backgroundColor: Colors.grey,
+                        ),
+                        title: Text("Content")
+                      ),
+                      
+                    ),
+                  ],
+                ),
               ))
             ],
           ),
