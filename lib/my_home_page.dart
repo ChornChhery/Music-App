@@ -28,9 +28,7 @@ class _MyHomePageState extends State<MyHomePage>
 
   Future<void> _loadSongs() async {
     try {
-      final String jsonString = await rootBundle.loadString(
-        'json/popularSongs.json',
-      );
+      final String jsonString = await rootBundle.loadString('json/popularSongs.json');
       final List<dynamic> data = json.decode(jsonString);
 
       data.forEach((song) {
@@ -53,184 +51,178 @@ class _MyHomePageState extends State<MyHomePage>
     super.dispose();
   }
 
+  List<dynamic> _getNewSongs() {
+    return popularSongs.reversed.take(5).toList();
+  }
+
+  List<dynamic> _getPopularSongs() {
+    return popularSongs.where((song) => song['rating'] >= 4.6).toList();
+  }
+
+  List<dynamic> _getTrendingSongs() {
+    final trending = List.from(popularSongs);
+    trending.shuffle();
+    return trending.take(7).toList();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
       color: AppColors.background,
       child: SafeArea(
-        child: Builder(
-          builder: (context) => Scaffold(
-            drawer: Drawer(
-              child: ListView(
-                padding: EdgeInsets.zero,
-                children: [
-                  DrawerHeader(
-                    decoration: BoxDecoration(color: AppColors.menu1Color),
-                    child: Text(
-                      'Chhery Chorn',
-                      style: TextStyle(color: Colors.white, fontSize: 24),
-                    ),
-                  ),
-                  ListTile(
-                    leading: Icon(Icons.home),
-                    title: Text('Home'),
-                    onTap: () => Navigator.pop(context),
-                  ),
-                  ListTile(
-                    leading: Icon(Icons.settings),
-                    title: Text('Settings'),
-                    onTap: () => Navigator.pop(context),
-                  ),
-                  ListTile(
-                    leading: Icon(Icons.logout),
-                    title: Text('Logout'),
-                    onTap: () => Navigator.pop(context),
-                  ),
-                ],
-              ),
-            ),
-            body: Column(
+        child: Scaffold(
+          drawer: Drawer(
+            child: ListView(
+              padding: EdgeInsets.zero,
               children: [
-                // Header
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 20,
-                    vertical: 10,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Builder(
-                        builder: (context) => GestureDetector(
-                          onTap: () {
-                            Scaffold.of(context).openDrawer();
-                          },
-                          child: const Icon(
-                            Icons.menu,
-                            size: 24,
-                            color: Colors.black,
-                          ),
-                        ),
-                      ),
-                      Row(
-                        children: [
-                          GestureDetector(
-                            onTap: () {
-                              showSearch(
-                                context: context,
-                                delegate: SongSearchDelegate(
-                                  allSongs: popularSongs,
-                                ),
-                              );
-                            },
-                            child: const Icon(Icons.search),
-                          ),
-                          const SizedBox(width: 10),
-                          const Icon(Icons.notifications),
-                        ],
-                      ),
-                    ],
+                DrawerHeader(
+                  decoration: BoxDecoration(color: AppColors.menu1Color),
+                  child: Text(
+                    'Chhery Chorn',
+                    style: TextStyle(color: Colors.white, fontSize: 24),
                   ),
                 ),
-
-                // Title
-                Padding(
-                  padding: const EdgeInsets.only(left: 20, bottom: 20),
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      "Music App",
-                      style: TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
+                ListTile(
+                  leading: Icon(Icons.home),
+                  title: Text('Home'),
+                  onTap: () => Navigator.pop(context),
                 ),
-
-                // Carousel
-                SizedBox(
-                  height: 180,
-                  child: PageView.builder(
-                    controller: PageController(viewportFraction: 0.85),
-                    itemCount: popularSongs.length,
-                    itemBuilder: (context, index) {
-                      final song = popularSongs[index];
-                      return Container(
-                        margin: const EdgeInsets.only(right: 10),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          image: DecorationImage(
-                            image: NetworkImage(song['image']),
-                            fit: BoxFit.cover,
-                          ),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.2),
-                              blurRadius: 10,
-                              offset: Offset(0, 5),
-                            ),
-                          ],
-                        ),
-                      );
-                    },
-                  ),
+                ListTile(
+                  leading: Icon(Icons.settings),
+                  title: Text('Settings'),
+                  onTap: () => Navigator.pop(context),
                 ),
-
-                const SizedBox(height: 20),
-
-                // TabBar
-                Expanded(
-                  child: NestedScrollView(
-                    controller: _scrollController,
-                    headerSliverBuilder: (context, innerBoxIsScrolled) => [
-                      SliverAppBar(
-                        pinned: true,
-                        backgroundColor: AppColors.sliverBackground,
-                        leading:
-                            Container(), // <-- This disables the automatic menu icon here
-                        bottom: PreferredSize(
-                          preferredSize: const Size.fromHeight(50),
-                          child: Transform.translate(
-                            offset: const Offset(10, 0),
-                            child: TabBar(
-                              controller: _tabController,
-                              labelPadding: const EdgeInsets.only(
-                                right: 10,
-                                bottom: 25,
-                              ),
-                              indicator: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey.withOpacity(0.2),
-                                    blurRadius: 7,
-                                    offset: Offset(0, 0),
-                                  ),
-                                ],
-                              ),
-                              tabs: [
-                                _buildTab("New", AppColors.menu1Color),
-                                _buildTab("Popular", AppColors.menu2Color),
-                                _buildTab("Trending", AppColors.menu3Color),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                    body: TabBarView(
-                      controller: _tabController,
-                      children: [
-                        _buildSongList(),
-                        _buildSongList(),
-                        _buildSongList(),
-                      ],
-                    ),
-                  ),
+                ListTile(
+                  leading: Icon(Icons.logout),
+                  title: Text('Logout'),
+                  onTap: () => Navigator.pop(context),
                 ),
               ],
             ),
+          ),
+          body: Column(
+            children: [
+              // Header
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Scaffold.of(context).openDrawer();
+                      },
+                      child: const Icon(Icons.menu, size: 24, color: Colors.black),
+                    ),
+                    Row(
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            showSearch(
+                              context: context,
+                              delegate: SongSearchDelegate(allSongs: popularSongs),
+                            );
+                          },
+                          child: const Icon(Icons.search),
+                        ),
+                        const SizedBox(width: 10),
+                        const Icon(Icons.notifications),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+
+              // Title
+              Padding(
+                padding: const EdgeInsets.only(left: 20, bottom: 20),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "Music App",
+                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+
+              // Carousel
+              SizedBox(
+                height: 180,
+                child: PageView.builder(
+                  controller: PageController(viewportFraction: 0.85),
+                  itemCount: popularSongs.length,
+                  itemBuilder: (context, index) {
+                    final song = popularSongs[index];
+                    return Container(
+                      margin: const EdgeInsets.only(right: 10),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        image: DecorationImage(
+                          image: NetworkImage(song['image']),
+                          fit: BoxFit.cover,
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.2),
+                            blurRadius: 10,
+                            offset: Offset(0, 5),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                ),
+              ),
+
+              const SizedBox(height: 20),
+
+              // TabBar & Tab Views
+              Expanded(
+                child: NestedScrollView(
+                  controller: _scrollController,
+                  headerSliverBuilder: (context, _) => [
+                    SliverAppBar(
+                      pinned: true,
+                      backgroundColor: AppColors.sliverBackground,
+                      leading: Container(),
+                      bottom: PreferredSize(
+                        preferredSize: const Size.fromHeight(50),
+                        child: Transform.translate(
+                          offset: const Offset(10, 0),
+                          child: TabBar(
+                            controller: _tabController,
+                            labelPadding: const EdgeInsets.only(right: 10, bottom: 25),
+                            indicator: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.2),
+                                  blurRadius: 7,
+                                  offset: Offset(0, 0),
+                                ),
+                              ],
+                            ),
+                            tabs: [
+                              _buildTab("New", AppColors.menu1Color),
+                              _buildTab("Popular", AppColors.menu2Color),
+                              _buildTab("Trending", AppColors.menu3Color),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                  body: TabBarView(
+                    controller: _tabController,
+                    children: [
+                      _buildSongList(_getNewSongs()),
+                      _buildSongList(_getPopularSongs()),
+                      _buildSongList(_getTrendingSongs()),
+                    ],
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),
@@ -263,12 +255,12 @@ class _MyHomePageState extends State<MyHomePage>
     );
   }
 
-  Widget _buildSongList() {
+  Widget _buildSongList(List<dynamic> songs) {
     return ListView.builder(
       padding: const EdgeInsets.symmetric(horizontal: 10),
-      itemCount: popularSongs.length,
+      itemCount: songs.length,
       itemBuilder: (context, index) {
-        final song = popularSongs[index];
+        final song = songs[index];
         return ListTile(
           leading: CircleAvatar(
             backgroundImage: NetworkImage(song['image']),

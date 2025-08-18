@@ -16,7 +16,7 @@
   {
     "title": "Acoustic Breeze",
     "text": "Bensound",
-    "rating": 4.6,
+    "rating": 4.9,
     "image": "https://www.bensound.com/bensound-img/acousticbreeze.jpg",
     "audio": "https://www.bensound.com/bensound-music/bensound-acousticbreeze.mp3"
   },
@@ -44,7 +44,7 @@
   {
     "title": "Memories",
     "text": "Bensound",
-    "rating": 4.5,
+    "rating": 4.9,
     "image": "https://www.bensound.com/bensound-img/memories.jpg",
     "audio": "https://www.bensound.com/bensound-music/bensound-memories.mp3"
   },
@@ -65,7 +65,7 @@
   {
     "title": "Energy",
     "text": "Bensound",
-    "rating": 4.4,
+    "rating": 4.8,
     "image": "https://www.bensound.com/bensound-img/energy.jpg",
     "audio": "https://www.bensound.com/bensound-music/bensound-energy.mp3"
   },
@@ -93,7 +93,7 @@
   {
     "title": "Dubstep",
     "text": "Bensound",
-    "rating": 4.4,
+    "rating": 4.9,
     "image": "https://www.bensound.com/bensound-img/dubstep.jpg",
     "audio": "https://www.bensound.com/bensound-music/bensound-dubstep.mp3"
   },
@@ -114,7 +114,7 @@
   {
     "title": "House",
     "text": "Bensound",
-    "rating": 4.5,
+    "rating": 4.9,
     "image": "https://www.bensound.com/bensound-img/house.jpg",
     "audio": "https://www.bensound.com/bensound-music/bensound-house.mp3"
   },
@@ -131,5 +131,124 @@
     "rating": 4.5,
     "image": "https://www.bensound.com/bensound-img/slowmotion.jpg",
     "audio": "https://www.bensound.com/bensound-music/bensound-slowmotion.mp3"
+  },
+  {
+    "title": "Ocean Waves",
+    "text": "Bensound",
+    "rating": 4.8,
+    "image": "https://www.bensound.com/bensound-img/oceanwaves.jpg",
+    "audio": "https://www.bensound.com/bensound-music/bensound-oceanwaves.mp3"
+  },
+  {
+    "title": "Morning Light",
+    "text": "Bensound",
+    "rating": 4.7,
+    "image": "https://www.bensound.com/bensound-img/morninglight.jpg",
+    "audio": "https://www.bensound.com/bensound-music/bensound-morninglight.mp3"
+  },
+  {
+    "title": "Chill Vibes",
+    "text": "Bensound",
+    "rating": 4.5,
+    "image": "https://www.bensound.com/bensound-img/chillvibes.jpg",
+    "audio": "https://www.bensound.com/bensound-music/bensound-chillvibes.mp3"
+  },
+  {
+    "title": "Night Drive",
+    "text": "Bensound",
+    "rating": 4.9,
+    "image": "https://www.bensound.com/bensound-img/nightdrive.jpg",
+    "audio": "https://www.bensound.com/bensound-music/bensound-nightdrive.mp3"
+  },
+  {
+    "title": "Energetic Beat",
+    "text": "Bensound",
+    "rating": 4.5,
+    "image": "https://www.bensound.com/bensound-img/energeticbeat.jpg",
+    "audio": "https://www.bensound.com/bensound-music/bensound-energeticbeat.mp3"
+  },
+  {
+    "title": "Sunset Groove",
+    "text": "Bensound",
+    "rating": 4.6,
+    "image": "https://www.bensound.com/bensound-img/sunsetgroove.jpg",
+    "audio": "https://www.bensound.com/bensound-music/bensound-sunsetgroove.mp3"
+  },
+  {
+    "title": "Epic Adventure",
+    "text": "Bensound",
+    "rating": 4.7,
+    "image": "https://www.bensound.com/bensound-img/epicadventure.jpg",
+    "audio": "https://www.bensound.com/bensound-music/bensound-epicadventure.mp3"
+  },
+   {
+    "title": "Ocean Waves",
+    "text": "Bensound",
+    "rating": 4.6,
+    "image": "https://www.bensound.com/bensound-img/oceanwaves.jpg",
+    "audio": "https://www.bensound.com/bensound-music/bensound-oceanwaves.mp3"
+  },
+  {
+    "title": "Morning Light",
+    "text": "Bensound",
+    "rating": 4.7,
+    "image": "https://www.bensound.com/bensound-img/morninglight.jpg",
+    "audio": "https://www.bensound.com/bensound-music/bensound-morninglight.mp3"
+  },
+  {
+    "title": "Chill Vibes",
+    "text": "Bensound",
+    "rating": 4.5,
+    "image": "https://www.bensound.com/bensound-img/chillvibes.jpg",
+    "audio": "https://www.bensound.com/bensound-music/bensound-chillvibes.mp3"
+  },
+  {
+    "title": "Night Drive",
+    "text": "Bensound",
+    "rating": 4.6,
+    "image": "https://www.bensound.com/bensound-img/nightdrive.jpg",
+    "audio": "https://www.bensound.com/bensound-music/bensound-nightdrive.mp3"
+  },
+  {
+    "title": "Energetic Beat",
+    "text": "Bensound",
+    "rating": 4.8,
+    "image": "https://www.bensound.com/bensound-img/energeticbeat.jpg",
+    "audio": "https://www.bensound.com/bensound-music/bensound-energeticbeat.mp3"
+  },
+  {
+    "title": "Sunset Groove",
+    "text": "Bensound",
+    "rating": 4.6,
+    "image": "https://www.bensound.com/bensound-img/sunsetgroove.jpg",
+    "audio": "https://www.bensound.com/bensound-music/bensound-sunsetgroove.mp3"
+  },
+  {
+    "title": "Epic Adventure",
+    "text": "Bensound",
+    "rating": 4.7,
+    "image": "https://www.bensound.com/bensound-img/epicadventure.jpg",
+    "audio": "https://www.bensound.com/bensound-music/bensound-epicadventure.mp3"
+  },
+  {
+    "title": "Urban Groove",
+    "text": "Bensound",
+    "rating": 4.9,
+    "image": "https://www.bensound.com/bensound-img/urbangroove.jpg",
+    "audio": "https://www.bensound.com/bensound-music/bensound-urbangroove.mp3"
+  },
+  {
+    "title": "Lazy Day",
+    "text": "Bensound",
+    "rating": 4.99,
+    "image": "https://www.bensound.com/bensound-img/lazyday.jpg",
+    "audio": "https://www.bensound.com/bensound-music/bensound-lazyday.mp3"
+  },
+  {
+    "title": "Cinematic",
+    "text": "Bensound",
+    "rating": 4.7,
+    "image": "https://www.bensound.com/bensound-img/cinematic.jpg",
+    "audio": "https://www.bensound.com/bensound-music/bensound-cinematic.mp3"
   }
 ]
