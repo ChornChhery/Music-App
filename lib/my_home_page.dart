@@ -10,6 +10,38 @@ class MyHomePage extends StatefulWidget {
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
+// ✅ Simple Notification Screen
+class NotificationScreen extends StatelessWidget {
+  const NotificationScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final List<String> notifications = [
+      "🎵 New album released: Summer Vibes",
+      "🔥 Trending: Top 10 Pop Songs",
+      "🎧 Recommended for you: Chill Beats",
+      "📢 Update: Playlist synced successfully",
+    ];
+
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Notifications"),
+        backgroundColor: Colors.deepPurple,
+      ),
+      body: ListView.separated(
+        padding: const EdgeInsets.all(16),
+        itemCount: notifications.length,
+        separatorBuilder: (context, index) => const Divider(),
+        itemBuilder: (context, index) {
+          return ListTile(
+            leading: const Icon(Icons.notifications_active),
+            title: Text(notifications[index]),
+          );
+        },
+      ),
+    );
+  }
+}
 
 class _MyHomePageState extends State<MyHomePage>
     with SingleTickerProviderStateMixin {
@@ -28,7 +60,9 @@ class _MyHomePageState extends State<MyHomePage>
 
   Future<void> _loadSongs() async {
     try {
-      final String jsonString = await rootBundle.loadString('json/popularSongs.json');
+      final String jsonString = await rootBundle.loadString(
+        'json/popularSongs.json',
+      );
       final List<dynamic> data = json.decode(jsonString);
 
       data.forEach((song) {
@@ -104,29 +138,52 @@ class _MyHomePageState extends State<MyHomePage>
             children: [
               // Header
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 10,
+                ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    GestureDetector(
-                      onTap: () {
-                        Scaffold.of(context).openDrawer();
-                      },
-                      child: const Icon(Icons.menu, size: 24, color: Colors.black),
+                    Builder(
+                      builder: (context) => GestureDetector(
+                        onTap: () {
+                          Scaffold.of(context).openDrawer();
+                        },
+                        child: const Icon(
+                          Icons.menu,
+                          size: 24,
+                          color: Colors.black,
+                        ),
+                      ),
                     ),
+
                     Row(
                       children: [
                         GestureDetector(
                           onTap: () {
                             showSearch(
                               context: context,
-                              delegate: SongSearchDelegate(allSongs: popularSongs),
+                              delegate: SongSearchDelegate(
+                                allSongs: popularSongs,
+                              ),
                             );
                           },
                           child: const Icon(Icons.search),
                         ),
                         const SizedBox(width: 10),
-                        const Icon(Icons.notifications),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const NotificationScreen(),
+                              ),
+                            );
+                          },
+                          child: const Icon(Icons.notifications),
+                        ),
+
                       ],
                     ),
                   ],
@@ -191,7 +248,10 @@ class _MyHomePageState extends State<MyHomePage>
                           offset: const Offset(10, 0),
                           child: TabBar(
                             controller: _tabController,
-                            labelPadding: const EdgeInsets.only(right: 10, bottom: 25),
+                            labelPadding: const EdgeInsets.only(
+                              right: 10,
+                              bottom: 25,
+                            ),
                             indicator: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               boxShadow: [
