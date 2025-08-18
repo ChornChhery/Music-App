@@ -10,7 +10,8 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateMixin {
+class _MyHomePageState extends State<MyHomePage>
+    with SingleTickerProviderStateMixin {
   late List<dynamic> popularSongs;
   late ScrollController _scrollController;
   late TabController _tabController;
@@ -26,7 +27,9 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
 
   Future<void> _loadSongs() async {
     try {
-      final String jsonString = await rootBundle.loadString('json/popularSongs.json');
+      final String jsonString = await rootBundle.loadString(
+        'json/popularSongs.json',
+      );
       final List<dynamic> data = json.decode(jsonString);
 
       // Trim whitespace from URLs
@@ -60,7 +63,10 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
             children: [
               // Header
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 10,
+                ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -127,24 +133,37 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                     SliverAppBar(
                       pinned: true,
                       backgroundColor: AppColors.sliverBackground,
-                      bottom: TabBar(
-                        controller: _tabController,
-                        isScrollable: true,
-                        indicator: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.2),
-                              blurRadius: 7,
-                              offset: Offset(0, 0),
+                      bottom: PreferredSize(
+                        preferredSize: const Size.fromHeight(50),
+                        child: Transform.translate(
+                          offset: const Offset(
+                            10,
+                            0,
+                          ), // 👈 shift 20 pixels to the left
+                          child: TabBar(
+                            controller: _tabController,
+                            isScrollable: false,
+                            labelPadding: const EdgeInsets.only(
+                              right: 10,
+                              bottom: 25,
                             ),
-                          ],
+                            indicator: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.2),
+                                  blurRadius: 7,
+                                  offset: Offset(0, 0),
+                                ),
+                              ],
+                            ),
+                            tabs: [
+                              _buildTab("New", AppColors.menu1Color),
+                              _buildTab("Popular", AppColors.menu2Color),
+                              _buildTab("Trending", AppColors.menu3Color),
+                            ],
+                          ),
                         ),
-                        tabs: [
-                          _buildTab("New", AppColors.menu1Color),
-                          _buildTab("Popular", AppColors.menu2Color),
-                          _buildTab("Trending", AppColors.menu3Color),
-                        ],
                       ),
                     ),
                   ],
@@ -184,7 +203,10 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
       ),
       child: Text(
         label,
-        style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+        style: const TextStyle(
+          color: Colors.white,
+          fontWeight: FontWeight.w600,
+        ),
       ),
     );
   }
@@ -201,9 +223,19 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
             backgroundImage: NetworkImage(song['image']),
             backgroundColor: Colors.grey[300],
           ),
-          title: Text(song['title'], style: const TextStyle(fontWeight: FontWeight.bold)),
-          subtitle: Text(song['text'], style: TextStyle(color: Colors.grey[600])),
-          trailing:  Icon(Icons.play_circle_fill, color:AppColors.loveColor, size: 30),
+          title: Text(
+            song['title'],
+            style: const TextStyle(fontWeight: FontWeight.bold),
+          ),
+          subtitle: Text(
+            song['text'],
+            style: TextStyle(color: Colors.grey[600]),
+          ),
+          trailing: Icon(
+            Icons.play_circle_fill,
+            color: AppColors.loveColor,
+            size: 30,
+          ),
         );
       },
     );
