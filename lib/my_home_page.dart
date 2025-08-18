@@ -210,23 +210,65 @@ class _MyHomePageState extends State<MyHomePage>
                   itemCount: popularSongs.length,
                   itemBuilder: (context, index) {
                     final song = popularSongs[index];
-                    return Container(
-                      margin: const EdgeInsets.only(right: 10),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        image: DecorationImage(
-                          image: NetworkImage(song['image']),
-                          fit: BoxFit.cover,
-                        ),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.2),
-                            blurRadius: 10,
-                            offset: Offset(0, 5),
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => SongDetailScreen(
+                              song: song,
+                              allSongs: popularSongs.cast<Map<String, dynamic>>(),
+                            ),
+                          ),
+                        );
+                      },
+                      child: Stack(
+                        children: [
+                          Container(
+                            margin: const EdgeInsets.only(right: 10),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15),
+                              image: DecorationImage(
+                                image: NetworkImage(song['image']),
+                                fit: BoxFit.cover,
+                              ),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withOpacity(0.2),
+                                  blurRadius: 10,
+                                  offset: Offset(0, 5),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Positioned(
+                            bottom: 0,
+                            left: 0,
+                            right: 0,
+                            child: Container(
+                              padding: const EdgeInsets.all(10),
+                              decoration: BoxDecoration(
+                                borderRadius: const BorderRadius.vertical(bottom: Radius.circular(15)),
+                                gradient: LinearGradient(
+                                  colors: [Colors.transparent, Colors.black.withOpacity(0.6)],
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                ),
+                              ),
+                              child: Text(
+                                song['title'],
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
                           ),
                         ],
                       ),
                     );
+
                   },
                 ),
               ),
@@ -321,24 +363,7 @@ class _MyHomePageState extends State<MyHomePage>
       itemCount: songs.length,
       itemBuilder: (context, index) {
         final song = songs[index];
-        return ListTile(
-          leading: CircleAvatar(
-            backgroundImage: NetworkImage(song['image']),
-            backgroundColor: Colors.grey[300],
-          ),
-          title: Text(
-            song['title'],
-            style: const TextStyle(fontWeight: FontWeight.bold),
-          ),
-          subtitle: Text(
-            song['text'],
-            style: TextStyle(color: Colors.grey[600]),
-          ),
-          trailing: Icon(
-            Icons.play_circle_fill,
-            color: AppColors.loveColor,
-            size: 30,
-          ),
+        return GestureDetector(
           onTap: () {
             Navigator.push(
               context,
@@ -350,7 +375,61 @@ class _MyHomePageState extends State<MyHomePage>
               ),
             );
           },
+          child: Card(
+            elevation: 4,
+            margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 4),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(10),
+              child: Row(
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Image.network(
+                      song['image'],
+                      height: 60,
+                      width: 60,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          song['title'],
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                          ),
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          song['text'],
+                          style: TextStyle(
+                            color: Colors.grey[600],
+                            fontSize: 14,
+                          ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ],
+                    ),
+                  ),
+                  Icon(
+                    Icons.play_circle_fill,
+                    color: AppColors.loveColor,
+                    size: 32,
+                  ),
+                ],
+              ),
+            ),
+          ),
         );
+
       },
     );
   }
