@@ -139,7 +139,7 @@ class _SongDetailScreenState extends State<SongDetailScreen>
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+      backgroundColor: const Color(0xFFECECEC).withOpacity(0.7),
         elevation: 0,
         leading: BackButton(color: Colors.black),
         actions: [
@@ -178,22 +178,24 @@ class _SongDetailScreenState extends State<SongDetailScreen>
       builder: (_, __) => Transform.rotate(
         angle: _animationController.value * 2 * math.pi,
         child: Container(
-          height: 280,
-          width: 280,
+          height: 240,
+          width: 240,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
+            border: Border.all(color: Colors.white, width: 4),
             image: DecorationImage(
               image: NetworkImage(imageUrl.trim()),
               fit: BoxFit.cover,
             ),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.2),
-                blurRadius: 15,
-                offset: const Offset(0, 10),
+                color: Colors.deepPurple.withOpacity(0.4),
+                blurRadius: 25,
+                offset: const Offset(0, 12),
               ),
             ],
           ),
+
         ),
       ),
     );
@@ -281,7 +283,10 @@ class _SongDetailScreenState extends State<SongDetailScreen>
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         IconButton(
-          icon: Icon(Icons.shuffle, color: _isShuffle ? AppColors.loveColor : Colors.grey),
+          icon: Icon(
+            Icons.shuffle,
+            color: _isShuffle ? AppColors.loveColor : Colors.grey[400],
+          ),
           onPressed: () => setState(() => _isShuffle = !_isShuffle),
           tooltip: 'Shuffle',
         ),
