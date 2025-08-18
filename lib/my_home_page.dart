@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
+import 'song_detail_screen.dart';
 import 'dart:convert';
 import 'app_colors.dart' as AppColors;
 
@@ -231,6 +232,18 @@ class _MyHomePageState extends State<MyHomePage>
             song['text'],
             style: TextStyle(color: Colors.grey[600]),
           ),
+          onTap: () {
+           Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => SongDetailScreen(
+                song: song,
+                allSongs: popularSongs.cast<Map<String, dynamic>>(),
+              ),
+            ),
+           ); 
+          }
+          ,
           trailing: Icon(
             Icons.play_circle_fill,
             color: AppColors.loveColor,
