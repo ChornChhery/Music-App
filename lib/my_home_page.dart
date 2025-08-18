@@ -11,7 +11,8 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateMixin {
+class _MyHomePageState extends State<MyHomePage>
+    with SingleTickerProviderStateMixin {
   late List<dynamic> popularSongs;
   late ScrollController _scrollController;
   late TabController _tabController;
@@ -27,7 +28,9 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
 
   Future<void> _loadSongs() async {
     try {
-      final String jsonString = await rootBundle.loadString('json/popularSongs.json');
+      final String jsonString = await rootBundle.loadString(
+        'json/popularSongs.json',
+      );
       final List<dynamic> data = json.decode(jsonString);
 
       data.forEach((song) {
@@ -63,7 +66,10 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                 children: [
                   DrawerHeader(
                     decoration: BoxDecoration(color: AppColors.menu1Color),
-                    child: Text('Menu', style: TextStyle(color: Colors.white, fontSize: 24)),
+                    child: Text(
+                      'Chhery Chorn',
+                      style: TextStyle(color: Colors.white, fontSize: 24),
+                    ),
                   ),
                   ListTile(
                     leading: Icon(Icons.home),
@@ -87,15 +93,24 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
               children: [
                 // Header
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 10,
+                  ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      GestureDetector(
-                        onTap: () {
-                          Scaffold.of(context).openDrawer();
-                        },
-                        child: const Icon(Icons.menu, size: 24, color: Colors.black),
+                      Builder(
+                        builder: (context) => GestureDetector(
+                          onTap: () {
+                            Scaffold.of(context).openDrawer();
+                          },
+                          child: const Icon(
+                            Icons.menu,
+                            size: 24,
+                            color: Colors.black,
+                          ),
+                        ),
                       ),
                       Row(
                         children: [
@@ -103,7 +118,9 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                             onTap: () {
                               showSearch(
                                 context: context,
-                                delegate: SongSearchDelegate(allSongs: popularSongs),
+                                delegate: SongSearchDelegate(
+                                  allSongs: popularSongs,
+                                ),
                               );
                             },
                             child: const Icon(Icons.search),
@@ -123,7 +140,10 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                     alignment: Alignment.centerLeft,
                     child: Text(
                       "Music App",
-                      style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
@@ -167,14 +187,18 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                       SliverAppBar(
                         pinned: true,
                         backgroundColor: AppColors.sliverBackground,
-                        leading: Container(), // <-- This disables the automatic menu icon here
+                        leading:
+                            Container(), // <-- This disables the automatic menu icon here
                         bottom: PreferredSize(
                           preferredSize: const Size.fromHeight(50),
                           child: Transform.translate(
                             offset: const Offset(10, 0),
                             child: TabBar(
                               controller: _tabController,
-                              labelPadding: const EdgeInsets.only(right: 10, bottom: 25),
+                              labelPadding: const EdgeInsets.only(
+                                right: 10,
+                                bottom: 25,
+                              ),
                               indicator: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                                 boxShadow: [
@@ -250,9 +274,19 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
             backgroundImage: NetworkImage(song['image']),
             backgroundColor: Colors.grey[300],
           ),
-          title: Text(song['title'], style: const TextStyle(fontWeight: FontWeight.bold)),
-          subtitle: Text(song['text'], style: TextStyle(color: Colors.grey[600])),
-          trailing: Icon(Icons.play_circle_fill, color: AppColors.loveColor, size: 30),
+          title: Text(
+            song['title'],
+            style: const TextStyle(fontWeight: FontWeight.bold),
+          ),
+          subtitle: Text(
+            song['text'],
+            style: TextStyle(color: Colors.grey[600]),
+          ),
+          trailing: Icon(
+            Icons.play_circle_fill,
+            color: AppColors.loveColor,
+            size: 30,
+          ),
           onTap: () {
             Navigator.push(
               context,
@@ -301,7 +335,8 @@ class SongSearchDelegate extends SearchDelegate {
     final results = allSongs.where((song) {
       final title = song['title'].toString().toLowerCase();
       final text = song['text'].toString().toLowerCase();
-      return title.contains(query.toLowerCase()) || text.contains(query.toLowerCase());
+      return title.contains(query.toLowerCase()) ||
+          text.contains(query.toLowerCase());
     }).toList();
 
     return ListView.builder(
@@ -309,9 +344,7 @@ class SongSearchDelegate extends SearchDelegate {
       itemBuilder: (context, index) {
         final song = results[index];
         return ListTile(
-          leading: CircleAvatar(
-            backgroundImage: NetworkImage(song['image']),
-          ),
+          leading: CircleAvatar(backgroundImage: NetworkImage(song['image'])),
           title: Text(song['title']),
           subtitle: Text(song['text']),
           onTap: () {
@@ -335,7 +368,8 @@ class SongSearchDelegate extends SearchDelegate {
     final suggestions = allSongs.where((song) {
       final title = song['title'].toString().toLowerCase();
       final text = song['text'].toString().toLowerCase();
-      return title.contains(query.toLowerCase()) || text.contains(query.toLowerCase());
+      return title.contains(query.toLowerCase()) ||
+          text.contains(query.toLowerCase());
     }).toList();
 
     return ListView.builder(
