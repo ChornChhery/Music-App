@@ -28,16 +28,16 @@ A sleek and simple Flutter-based music player that allows users to browse, selec
 ---
 
 ## 📂 Project Structure
-
+```
 lib/
-├── main.dart # Entry point
-├── home_screen.dart # Song list screen
-├── song_detail_screen.dart # Song player screen
-├── app_colors.dart # Custom color definitions
-└── assets/
-└── songs.json # List of songs with metadata
+  ├── main.dart # Entry point
+  ├── home_screen.dart # Song list screen
+  ├── song_detail_screen.dart # Song player screen
+  ├── app_colors.dart # Custom color definitions
+  └── json/
+  └── popularSongs.json # List of songs with metadata
 
-
+```
 ---
 
 ## 📦 Dependencies
@@ -55,7 +55,7 @@ dependencies:
 🔧 Setup Instructions
 1. Clone the repo
 
-git clone https://github.com/your-username/flutter-music-player.git
+git clone https://github.com/ChornChhery/flutter-music-player.git
 cd flutter-music-player
 
 2. Install dependencies
@@ -136,7 +136,7 @@ Scaffold
     └── Row (Shuffle & Repeat Buttons)
 
 
-Made with ❤️ using Flutter
+Made with ❤️ using Flutter by Mr.Chhery Chorn
 
 
 Let me know if you'd like a `.md` file download or if you want to publish it to a pub
