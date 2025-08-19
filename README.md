@@ -50,8 +50,8 @@ dependencies:
   audio_session: ^0.1.13
   path_provider: ^2.1.1
 
-
-
+```
+```
 🔧 Setup Instructions
 1. Clone the repo
 
@@ -98,10 +98,11 @@ Album art from YouTube Thumbnails
 Sample audio files via SoundHelix
 
 📜 License
+```
 
 This project is for educational and personal use only.
 🚫 Do not distribute copyrighted songs
-
+```
 🧱 Widget Tree
 App Navigation
 MaterialApp
@@ -134,7 +135,7 @@ Scaffold
     │   ├── Play/Pause
     │   └── Next
     └── Row (Shuffle & Repeat Buttons)
-
+```
 
 Made with ❤️ using Flutter by Mr.Chhery Chorn
 
